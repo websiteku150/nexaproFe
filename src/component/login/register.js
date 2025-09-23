@@ -30,9 +30,15 @@ function Register(){
             setMessage("Kata Sandi dan Konfirmasi tidak sama ")
             return;
         }
-        if (users.find(f => f.username === username && f.password === password)){
-            setMessage("Ganti Nama Pengguna dan Kata Sandi Anda")
-            return;
+        if (users.find(f =>f.email === email && f.username === username && f.password === password)){
+            Swal.fire({
+            icon: 'error',
+            title: 'Gagal Registrasi',
+            text: 'Ganti Data Anda, Tidak Boleh sama',
+            showConfirmButton: 'Oke',
+            timer: 2000
+            })
+                return;
         }
 
         
