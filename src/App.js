@@ -7,6 +7,7 @@ import './component/admin/admin'
 import Admin from './component/admin/admin';
 import Register from './component/login/register';
 import Customer from './component/customer/customer';
+import ChangePassword from './component/login/changePassword';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/register' element={<Register/>}/>
         <Route path='/admin' element={<Admin/>}/>
         <Route path='/customer' element={<Customer/>}/>
+        <Route path='/changePassword' element={<ChangePassword/>}/>
       </Routes>
     </Router>
   );

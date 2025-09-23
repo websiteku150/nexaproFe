@@ -1,6 +1,7 @@
 .container-register {
   font-family: 'Poppins', sans-serif;
-  background: #e3f2fd; /* biru muda */
+  background: #e3f2fd;
+  /* biru muda */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,7 +12,7 @@
   background: #fff;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 400px;
   text-align: center;
 }
@@ -34,7 +35,8 @@
 }
 
 .password-group .form-control {
-  padding-right: 40px; /* kasih ruang buat icon tambahan kalau mau */
+  padding-right: 40px;
+  /* kasih ruang buat icon tambahan kalau mau */
 }
 
 .btn-register {
@@ -68,24 +70,29 @@
   text-decoration: underline;
 }
 
-.form-control-register{
-    width: 80%;
-    border: none;
-    border-bottom: 2px solid #2563eb;
-}
-.form-control-register:focus{
-    outline: none;
-    border-bottom: 2px solid #13347c;
+.form-control-register {
+  width: 80%;
+  border: none;
+  border-bottom: 2px solid #2563eb;
 }
 
-.input-group-username-register, .input-group-email-register, .input-group-password-register, .input-group-confirm-register {
-margin-right: 3%;
-font-size: 21px;
+.form-control-register:focus {
+  outline: none;
+  border-bottom: 2px solid #13347c;
 }
+
+.input-group-username-register,
+.input-group-email-register,
+.input-group-password-register,
+.input-group-confirm-register {
+  margin-right: 3%;
+  font-size: 21px;
+}
+
 .message-register {
-  background-color: #fdecea;   
-  border: 1px solid #f5c2c7;   
-  color: #b71c1c;              
+  background-color: #fdecea;
+  border: 1px solid #f5c2c7;
+  color: #b71c1c;
   padding: 0.75rem 1rem;
   border-radius: 6px;
   font-size: 14px;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Api from "./api";
-import "./style.css";
+import "./login.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -88,14 +88,19 @@ function Login() {
 
             </span>
           </div>
+          {/* Link Lupa Password */}
+        </form>
           {/* Tombol Login */}
           <button type="submit" className="btn-register">
             Masuk
           </button>
-        </form>
+          
 
         {/* Pesan Error */}
         {message && <div className="message-register">{message}</div>}
+          <p className="forgot-password">
+            <Link to="/changePassword">Lupa kata sandi?</Link>
+          </p>
 
         {/* Link ke Register */}
         <p className="register-text">

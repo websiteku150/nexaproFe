@@ -38,7 +38,7 @@ function Register(){
             showConfirmButton: 'Oke',
             timer: 2000
             })
-                return;
+            return;
         }
 
         
