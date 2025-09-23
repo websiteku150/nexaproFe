@@ -8,6 +8,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import Swal from "sweetalert2";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import logo from '../img/logo.png'
 
 const dummyData = [
   { username: "admin", password: "admin123", email: "admin123@gmail.com", role: "admin" },
@@ -46,14 +47,16 @@ function Login() {
         }
       });
     } else {
-      setMessage("Login gagal, pastikan username & password benar ❌");
+      setMessage("Pastikan Username dan Password Benar");
     }
   };
 
   return (
     <div className="container-register">
       <div className="register-box" data-aos="flip-right">
-        <h1 className="logo">NEXAPRO</h1>
+        <div className="logo">
+            <img src={logo} alt="logo" style={{height: 110, marginBottom: 0}}/>
+        </div>
         <p className="tagline-register">Masuk ke Akun Anda</p>
 
         <form onSubmit={handleLogin}>

@@ -9,6 +9,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import logo from '../img/logo.png'
 
 function ChangePassword(){
     const [username, setUsername] = useState('');
@@ -25,13 +26,15 @@ function ChangePassword(){
     const handleReset = async (e) => {
         e.preventDefault();
 
-            if(password < 6){
+        const passRegex = /^.{6,}$/; 
+
+            if(!passRegex.test(password)){
                     Swal.fire({
                     icon: 'error',
                     title: 'Kata Sandi Terlalu Pendek!',
                     text: 'Kata Sandi Minimal 6 Karakter',
                     showConfirmButton: 'Oke',
-                    timer: 2000
+                    timer: 3000
                 })
                 return;
             }
@@ -63,7 +66,9 @@ function ChangePassword(){
     return(
         <div className="container-register">
         <div className="register-box" data-aos="flip-right">
-            <h1 className="logo">NEXAPRO</h1>
+            <div className="logo">
+                <img src={logo} alt="logo" style={{height: 110, marginBottom: 0}}/>
+            </div>
             <p className="tagline-register">Ganti Kata Sandi Baru</p>
             <form onSubmit={handleReset}>
                 <div class="mb-3 input-group" style={{display: "none"}}>
