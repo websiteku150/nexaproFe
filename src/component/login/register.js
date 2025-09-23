@@ -1,16 +1,19 @@
-import React, { use } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Api from "./api";
+import './register.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import { Link } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 const dummyData = [
     {username: 'admin', password: 'admin123',email: 'admin123@gmail.com', role:'admin'},
     {username: 'customer', password: 'customer',email:'customer123@gmail.com', role:'customer'},
 ]
 function Register(){
-    //roziiiiiiiii
-
-    
 
     const [users,setUsers] = useState(dummyData)
     const [username, setUsername] = useState('');
@@ -18,24 +21,32 @@ function Register(){
     const [confirm, setConfirm] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
+    const [showPassword, setShowPassword] = useState(false)
     const navigate = useNavigate();
     
     const handleRegister = (e) => {
         e.preventDefault();
         if (password !== confirm){
-            setMessage("Password dan Konfirmasi password tidak sama ")
+            setMessage("Kata Sandi dan Konfirmasi tidak sama ")
             return;
         }
         if (users.find(f => f.username === username && f.password === password)){
-            setMessage("Ganti Username dan Password anda")
+            setMessage("Ganti Nama Pengguna dan Kata Sandi Anda")
             return;
         }
 
+        
         const newUser = {username, password,email,  role: 'customer'};
         setUsers([...users, newUser])
-        setMessage('Register Berhasil')
-        setTimeout(() => {navigate("/customer");}, 1000);
+        Swal.fire({
+            icon: 'success',
+            title: 'Registrasi Berhasil!',
+            text: 'Akun kamu sudah dibuat. Selamat datang!',
+            showConfirmButton: false,
+            timer: 2000
+        }).then(() => {navigate("/customer");}, 1000);
     }
+    
     
         // try{
         //     const res = await Api.post('/register',{
@@ -58,40 +69,78 @@ function Register(){
         //     setMessage(err.response?.data?.message || "SERVER ERROR");
         // }
     return(
-        <div>
-            <h2>Register</h2>
+        <div className="container-register">
+        <div className="register-box">
+            <h1 className="logo">NEXAPRO</h1>
+            <p className="tagline-register">Buat Akun Baru</p>
             <form onSubmit={handleRegister}>
-                <input
-                type="text"
-                placeholder="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-                />
-                <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                />
-                <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                />
-                <input
-                type="password"
-                placeholder="Konfirmasi Password"
-                value={confirm}
-                onChange={(e) => setConfirm(e.target.value)}
-                required
-                />
-                <button type="Submit">Register</button>
+                <div class="mb-3 input-group">
+                    <span class="input-group-username-register"><i class="bi bi-person" style={{color:'#1e40af'}}></i></span>
+                    <input
+                    className="form-control-register"
+                    type="text"
+                    placeholder="Nama Pengguna"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                    />
+                </div>
+                <div class="mb-3 input-group">
+                    <span class="input-group-email-register"><i class="bi bi-envelope" style={{color:'#1e40af'}}></i></span>
+                    <input
+                    className="form-control-register"
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    />
+                </div>
+                <div class="mb-3 input-group password-group">
+                    <span class="input-group-password-register" ><i class="bi bi-lock" style={{color:'#1e40af'}}></i></span>
+                    <input
+                    className="form-control-register"
+                    type={showPassword? "text" : "password"}
+                    placeholder="Kata Sandi"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    />
+                    <span
+                        className="toggle-password"
+                        onClick={() => setShowPassword(!showPassword)}
+                        style={{ cursor: "pointer", marginLeft: "8px", color:'#2563eb',fontSize: 20  }}
+                        >
+                        <i className={showPassword ? "bi bi-eye-slash" : "bi bi-eye"}></i>
+                    </span>
+                </div>
+                <div class="mb-3 input-group password-group">
+                    <span class="input-group-confirm-register"><i class="bi bi-shield-lock" style={{color:'#1e40af'}}></i></span>
+                    <input
+                    className="form-control-register"
+                    type={showPassword? "text" : "password"}
+                    placeholder="Konfirmasi Kata Sandi"
+                    value={confirm}
+                    onChange={(e) => setConfirm(e.target.value)}
+                    required
+                    />
+                    <span
+                        className="toggle-password"
+                        onClick={() => setShowPassword(!showPassword)}
+                        style={{ cursor: "pointer", marginLeft: "8px", color:'#2563eb', fontSize: 20 }}
+                        >
+                        <i className={showPassword ? "bi bi-eye-slash" : "bi bi-eye"}></i>
+                    </span>
+                </div>
+                <button type="Submit" className="btn-register">Buat Akun</button>
             </form>
-            <p>{message}</p>
+            <p>Sudah punya akun? <Link to='/login'>Masuk</Link></p>
+            {message && (
+            <div className="message-register">
+                {message}
+            </div>
+            )}
+        </div>
         </div>
     )
 }
