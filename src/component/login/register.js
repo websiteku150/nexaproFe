@@ -111,7 +111,7 @@ function Register(){
                         onClick={() => setShowPassword(!showPassword)}
                         style={{ cursor: "pointer", marginLeft: "8px", color:'#2563eb',fontSize: 20  }}
                         >
-                        <i className={showPassword ? "bi bi-eye-slash" : "bi bi-eye"}></i>
+                        <i className={showPassword ? "bi bi-eye" : "bi bi-eye-slash "}></i>
                     </span>
                 </div>
                 <div class="mb-3 input-group password-group">
@@ -129,7 +129,7 @@ function Register(){
                         onClick={() => setShowPassword(!showPassword)}
                         style={{ cursor: "pointer", marginLeft: "8px", color:'#2563eb', fontSize: 20 }}
                         >
-                        <i className={showPassword ? "bi bi-eye-slash" : "bi bi-eye"}></i>
+                        <i className={showPassword ? "bi bi-eye" : "bi bi-eye-slash"}></i>
                     </span>
                 </div>
                 <button type="Submit" className="btn-register">Buat Akun</button>
