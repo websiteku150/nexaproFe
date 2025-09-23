@@ -1,10 +1,12 @@
 .container-register {
   font-family: 'Poppins', sans-serif;
-  background: #e3f2fd;
-  /* biru muda */
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url('../img/bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   min-height: 100vh;
 }
 
@@ -48,6 +50,10 @@
   border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
+  transition: all ease-in 0.1s;
+}
+.btn-register:hover{
+    background: #16409a;
 }
 
 .btn-register:disabled {
@@ -97,4 +103,7 @@
   border-radius: 6px;
   font-size: 14px;
   margin-top: 1rem;
+}
+.link-register {
+    text-decoration: none;
 }

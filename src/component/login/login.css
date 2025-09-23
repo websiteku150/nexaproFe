@@ -65,10 +65,13 @@
 }
 
 .btn-login:hover {
-  background: #1e40af;
+  background: #16409a;
 }
 .forgot-password {
   text-align: center;
   margin-top: 5px;
   margin-bottom: 10px;
+}
+.link-login{
+  text-decoration: none;
 }

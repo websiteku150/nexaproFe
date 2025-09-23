@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Api from "./api";
 import "./login.css";
@@ -6,6 +6,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Swal from "sweetalert2";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const dummyData = [
   { username: "admin", password: "admin123", email: "admin123@gmail.com", role: "admin" },
@@ -17,6 +19,10 @@ function Login() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState("");
+
+  useEffect(() => {
+        AOS.init({ duration: 1000 });
+    }, []);
 
   const navigate = useNavigate();
 
@@ -46,7 +52,7 @@ function Login() {
 
   return (
     <div className="container-register">
-      <div className="register-box">
+      <div className="register-box" data-aos="flip-right">
         <h1 className="logo">NEXAPRO</h1>
         <p className="tagline-register">Masuk ke Akun Anda</p>
 
@@ -88,23 +94,23 @@ function Login() {
 
             </span>
           </div>
-          {/* Link Lupa Password */}
-        </form>
           {/* Tombol Login */}
           <button type="submit" className="btn-register">
             Masuk
           </button>
+        </form>
           
 
         {/* Pesan Error */}
         {message && <div className="message-register">{message}</div>}
+          {/* Link Lupa Password */}
           <p className="forgot-password">
-            <Link to="/changePassword">Lupa kata sandi?</Link>
+            <Link to="/changePassword" className="link-login">Lupa kata sandi?</Link>
           </p>
 
         {/* Link ke Register */}
         <p className="register-text">
-          Belum punya akun? <Link to="/register">Daftar di sini</Link>
+          Belum punya akun? <Link to="/register" className="link-login">Daftar di sini</Link>
         </p>
 
       </div>

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function ChangePassword(){
     const [username, setUsername] = useState('');
@@ -15,6 +17,10 @@ function ChangePassword(){
     const [confirm, setConfirm] = useState('');
     const [showPassword, setShowPassword] = useState(false)
     const navigate = useNavigate();
+
+    useEffect(() => {
+        AOS.init({ duration: 1000 });
+    }, []);
 
     const handleReset = async (e) => {
         e.preventDefault();
@@ -56,11 +62,11 @@ function ChangePassword(){
     }
     return(
         <div className="container-register">
-        <div className="register-box">
+        <div className="register-box" data-aos="flip-right">
             <h1 className="logo">NEXAPRO</h1>
             <p className="tagline-register">Ganti Kata Sandi Baru</p>
             <form onSubmit={handleReset}>
-                <div class="mb-3 input-group">
+                <div class="mb-3 input-group" style={{display: "none"}}>
                     <span class="input-group-username-register"><i class="bi bi-person" style={{color:'#1e40af'}}></i></span>
                     <input
                     className="form-control-register"
@@ -69,7 +75,6 @@ function ChangePassword(){
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     readOnly
-                    style={{display: "hidden"}}
                     />
                 </div>
                 <div class="mb-3 input-group">
@@ -121,7 +126,7 @@ function ChangePassword(){
                 </div>
                 <button type="Submit" className="btn-register">Ganti Kata Sandi</button>
             </form>
-            <p><Link to='/login'>Kembali ke Halaman Masuk</Link></p>
+            <p style={{marginTop: 10}}><Link to='/login' className="link-register">Kembali ke Halaman Masuk</Link></p>
         </div>
         </div>
     )

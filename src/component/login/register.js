@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Api from "./api";
 import './register.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,6 +8,8 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2'
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const dummyData = [
     {username: 'admin', password: 'admin123',email: 'admin123@gmail.com', role:'admin'},
@@ -23,6 +25,10 @@ function Register(){
     const [message, setMessage] = useState('');
     const [showPassword, setShowPassword] = useState(false)
     const navigate = useNavigate();
+
+      useEffect(() => {
+            AOS.init({ duration: 1000 });
+        }, []);
     
     const handleRegister = (e) => {
         e.preventDefault();
@@ -36,7 +42,6 @@ function Register(){
             title: 'Gagal Registrasi',
             text: 'Ganti Data Anda, Tidak Boleh sama',
             showConfirmButton: 'Oke',
-            timer: 2000
             })
             return;
         }
@@ -76,7 +81,7 @@ function Register(){
         // }
     return(
         <div className="container-register">
-        <div className="register-box">
+        <div className="register-box" data-aos="flip-left">
             <h1 className="logo">NEXAPRO</h1>
             <p className="tagline-register">Buat Akun Baru</p>
             <form onSubmit={handleRegister}>
@@ -140,7 +145,7 @@ function Register(){
                 </div>
                 <button type="Submit" className="btn-register">Buat Akun</button>
             </form>
-            <p>Sudah punya akun? <Link to='/login'>Masuk</Link></p>
+            <p style={{marginTop: 10}}>Sudah punya akun? <Link to='/login' className="link-register">Masuk</Link></p>
             {message && (
             <div className="message-register">
                 {message}
