@@ -8,6 +8,7 @@ import Register from './component/login/register';
 import ChangePassword from './component/login/changePassword';
 import CustomerHome from './component/customer/home/CustomerHome';
 import Streaming from './component/customer/streaming/streaming';
+import ProtectRoute from './component/login/protectRoute';
 
 function App() {
   return (
@@ -17,9 +18,18 @@ function App() {
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
         <Route path='/changePassword' element={<ChangePassword/>}/>
-        <Route path='/admin' element={<Admin/>}/>
-        <Route path='/customerHome' element={<CustomerHome/>}/>
-        <Route path='/customerStreaming' element={<Streaming/>}/>
+        <Route path='/admin' element={
+          <ProtectRoute role="Admin">
+          <Admin/>
+          </ProtectRoute>}/>
+        <Route path='/customerHome' element={
+          <ProtectRoute role="Customer">
+          <CustomerHome/>
+          </ProtectRoute>}/>
+        <Route path='/customerStreaming' element={
+          <ProtectRoute role="Customer">
+          <Streaming/>
+          </ProtectRoute>}/>
       </Routes>
     </Router>
   );
