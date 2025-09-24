@@ -85,7 +85,7 @@ function Register() {
       showConfirmButton: false,
       timer: 2000,
     }).then(() => {
-      navigate("/customer");
+      navigate("/customerHome");
     }, 1000);
   };
 
