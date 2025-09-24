@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './navbar.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import logo from '../../img/logo.png'
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -19,8 +21,12 @@ const Navbar = () => {
     return location.pathname.includes(path);
   };
 
+  useEffect(() => {
+      AOS.init({ duration: 1000 });
+    }, []);
+
   return (
-    <nav className="navbar">
+    <nav className="navbar" data-aos="fade-down">
       <div className="container">
         <img src={logo} alt="Logo NEXAPRO" className="navbar-logo" style={{height: 70}}/>
 

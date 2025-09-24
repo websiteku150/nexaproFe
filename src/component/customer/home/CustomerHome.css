@@ -71,7 +71,7 @@
 }
 
 .cta-button-home:hover {
-  background-color: #3151a3;
+  background-color: #14285c;
 }
 
 .container-card-home {
@@ -124,4 +124,83 @@
   font-size: 1em;
   color: #000;
   line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+  .hero-section-home {
+    padding: 50px 20px;
+  }
+
+  .main-heading-home {
+    font-size: 3em;
+  }
+
+  .sub-heading-home {
+    font-size: 1.8em;
+  }
+
+  .description-home {
+    font-size: 1em;
+  }
+
+  .container-card-home {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .card-home {
+    max-width: 45%;
+    margin-bottom: 20px;
+  }
+}
+
+/* Mobile: width < 768px */
+@media (max-width: 767px) {
+  .hero-section-home {
+    padding: 40px 10px;
+  }
+
+  .main-heading-home {
+    font-size: 2.2em;
+    margin-bottom: 20px;
+  }
+
+  .sub-heading-home {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+  }
+
+  .description-home {
+    font-size: 0.95em;
+    margin-bottom: 20px;
+  }
+
+  .cta-button-home {
+    padding: 12px 40px;
+    font-size: 1em;
+  }
+
+  .container-card-home {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .card-home {
+    max-width: 90%;
+    padding: 20px;
+  }
+
+  .icon-promo-home {
+    font-size: 2.5em;
+  }
+
+  .nama-promo-home {
+    font-size: 1.3em;
+  }
+
+  .isi-promo-home {
+    font-size: 0.95em;
+  }
 }
