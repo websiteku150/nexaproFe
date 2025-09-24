@@ -7,6 +7,7 @@ import Admin from './component/admin/admin';
 import Register from './component/login/register';
 import ChangePassword from './component/login/changePassword';
 import CustomerHome from './component/customer/home/CustomerHome';
+import Streaming from './component/customer/streaming/streaming';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/changePassword' element={<ChangePassword/>}/>
         <Route path='/admin' element={<Admin/>}/>
         <Route path='/customerHome' element={<CustomerHome/>}/>
+        <Route path='/customerStreaming' element={<Streaming/>}/>
       </Routes>
     </Router>
   );

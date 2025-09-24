@@ -8,17 +8,13 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import Swal from "sweetalert2";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import logo from '../img/logo.png'
-
-const dummyData = [
-  { username: "admin", password: "admin123", email: "admin123@gmail.com", role: "admin" },
-  { username: "customer", password: "customer", email: "customer123@gmail.com", role: "customer" },
-];
+import logo from "../img/logo.png";
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
@@ -27,40 +23,77 @@ function Login() {
 
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    // Validasi input kosong
-    if (!username.trim() || !password.trim()) {
-      setMessage("Username dan Password tidak boleh kosong");
-      return;
-    }
-
-    const user = dummyData.find((f) => f.username === username && f.password === password);
-
-    if (user) {
-      setMessage("");
-      Swal.fire({
-        icon: "success",
-        title: "Login Berhasil!",
-        text: `Selamat datang ${user.username}!`,
-        showConfirmButton: false,
-        timer: 2000,
-      }).then(() => {
-        if (user.role === "admin") {
-          navigate("/admin");
-        } else {
-          navigate("/customerHome");
-        }
-      });
-    } else {
-      // Hanya mengganti setMessage(...) menjadi SweetAlert seperti yang diminta
+    if (!username || !password) {
       Swal.fire({
         icon: "error",
         title: "Login Gagal",
-        text: "Pastikan Username dan Password benar",
+        text: "Username dan Password tidak boleh kosong",
+      });
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        "https://73e4e1fc2341.ngrok-free.app/api/Auth/login",
+        {
+          username,
+          password,
+          
+        }
+      );
+      const data = response.data;
+
+      if (data.token) {
+        setMessage("");
+
+        const decoded = jwtDecode(data.token);
+        const role = decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("role", role);
+        localStorage.setItem("username", data.username);
+        Swal.fire({
+          icon: "success",
+          title: "Login Berhasil!",
+          text: `Selamat datang ${data.username}!`,
+          showConfirmButton: false,
+          timer: 2000,
+        }).then(() => {
+          if (role === "Admin") {
+            navigate("/admin");
+            console.log(role)
+          } else {
+            navigate("/customerHome");
+          }
+        });
+        console.log("Respons backend:", data);
+      }
+    } catch (err) {
+
+      console.error(err);
+      if (err.response){
+        const status = err.response.status;
+        if (status === 401 || status === 400)
+        {
+          Swal.fire({
+          icon: "error",
+          title: "Login Gagal",
+          text: "Username atau Password salah",
+          showConfirmButton: true,
+        });
+        }
+      }else{
+      console.error(err);
+      Swal.fire({
+        icon: "error",
+        title: "Login Gagal",
+        text: "Server error, coba lagi nanti",
         showConfirmButton: true,
       });
+    }
     }
   };
 
@@ -79,14 +112,12 @@ function Login() {
               <i className="bi bi-person" style={{ color: "#1e40af" }}></i>
             </span>
             <input
-              className={`form-control-register ${!username && message ? "error-input" : ""}`}
+              className="form-control-register"
               type="text"
               placeholder="Nama Pengguna"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              style={{
-                borderColor: message === "Username dan Password tidak boleh kosong" && !username ? "red" : ""
-              }}
+              required
             />
           </div>
 
@@ -96,22 +127,13 @@ function Login() {
               <i className="bi bi-lock" style={{ color: "#1e40af" }}></i>
             </span>
             <input
-              className={`form-control-register ${!password && message ? "error-input" : ""}`}
+              className="form-control-register"
               type="password"
               placeholder="Kata Sandi"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              style={{
-                borderColor: message === "Username dan Password tidak boleh kosong" && !password ? "red" : ""
-              }}
+              required
             />
-            <span
-              className="toggle-password"
-              onClick={() => setShowPassword(!showPassword)}
-              style={{ cursor: "pointer", marginLeft: "8px", color: "#2563eb", fontSize: 20 }}
-            >
-              {/* Jika mau menampilkan icon toggle, bisa isi <i> di sini. Saya tidak merubah logika lain. */}
-            </span>
           </div>
           {/* Tombol Login */}
           <button type="submit" className="btn-register">
@@ -119,18 +141,22 @@ function Login() {
           </button>
         </form>
 
-        {/* Pesan Error (masih tampil untuk validasi kosong seperti sebelumnya) */}
+        {/* Pesan Error */}
         {message && <div className="message-register">{message}</div>}
         {/* Link Lupa Password */}
         <p className="forgot-password">
-          <Link to="/changePassword" className="link-login">Lupa kata sandi?</Link>
+          <Link to="/changePassword" className="link-login">
+            Lupa kata sandi?
+          </Link>
         </p>
 
         {/* Link ke Register */}
         <p className="register-text">
-          Belum punya akun? <Link to="/register" className="link-login">Daftar di sini</Link>
+          Belum punya akun?{" "}
+          <Link to="/register" className="link-login">
+            Daftar di sini
+          </Link>
         </p>
-
       </div>
     </div>
   );

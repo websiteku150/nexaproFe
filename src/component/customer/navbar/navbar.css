@@ -1,7 +1,7 @@
 /* General Navbar Styles */
 .navbar {
   width: 100%;
-  background: linear-gradient(90deg, #0a2136, #11c7e7);
+  background: linear-gradient(90deg, #165590, #11c7e7);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   position: fixed;
   top: 0;

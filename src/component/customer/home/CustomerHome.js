@@ -19,7 +19,7 @@ function CustomerHome() {
       <div className="hero-section-home">
         <div className="content-home">
           <h1 className="main-heading-home" data-aos="fade-up">
-            Selamat datang di <span class="highlight">NEXAPRO</span>
+            Selamat datang di <span className="highlight">NEXAPRO</span>
           </h1>
           <h2 className="sub-heading-home" data-aos="fade-up">
             Tempat Beli Akun Streaming & Software Editing Murah, Aman, Langsung
