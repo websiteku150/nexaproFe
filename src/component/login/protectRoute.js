@@ -8,7 +8,9 @@ function ProtectRoute({children, role}){
 
     try{
         const decode = jwtDecode(token);
-        if (decode.role !== role) return <Navigate to="/login"/>;
+        const userRole = decode["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+        console.log("ProtectRoute userRole:", decode)
+        if (userRole !== role) return <Navigate to="/login"/>;
         return children
     } catch (err){
         return <Navigate to="/login"/>

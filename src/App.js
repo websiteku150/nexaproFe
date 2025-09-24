@@ -27,7 +27,7 @@ function App() {
           <CustomerHome/>
           </ProtectRoute>}/>
         <Route path='/customerStreaming' element={
-          <ProtectRoute role="Customer">
+          <ProtectRoute role="customer">
           <Streaming/>
           </ProtectRoute>}/>
       </Routes>
