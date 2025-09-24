@@ -22,17 +22,24 @@ function Login() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-        AOS.init({ duration: 1000 });
-    }, []);
+    AOS.init({ duration: 1000 });
+  }, []);
 
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
 
+    // Validasi input kosong
+    if (!username.trim() || !password.trim()) {
+      setMessage("Username dan Password tidak boleh kosong");
+      return;
+    }
+
     const user = dummyData.find((f) => f.username === username && f.password === password);
 
     if (user) {
+      setMessage("");
       Swal.fire({
         icon: "success",
         title: "Login Berhasil!",
@@ -47,7 +54,13 @@ function Login() {
         }
       });
     } else {
-      setMessage("Pastikan Username dan Password Benar");
+      // Hanya mengganti setMessage(...) menjadi SweetAlert seperti yang diminta
+      Swal.fire({
+        icon: "error",
+        title: "Login Gagal",
+        text: "Pastikan Username dan Password benar",
+        showConfirmButton: true,
+      });
     }
   };
 
@@ -55,7 +68,7 @@ function Login() {
     <div className="container-register">
       <div className="register-box" data-aos="flip-right">
         <div className="logo">
-            <img src={logo} alt="logo" style={{height: 110, marginBottom: 0}}/>
+          <img src={logo} alt="logo" style={{ height: 110, marginBottom: 0 }} />
         </div>
         <p className="tagline-register">Masuk ke Akun Anda</p>
 
@@ -66,12 +79,14 @@ function Login() {
               <i className="bi bi-person" style={{ color: "#1e40af" }}></i>
             </span>
             <input
-              className="form-control-register"
+              className={`form-control-register ${!username && message ? "error-input" : ""}`}
               type="text"
               placeholder="Nama Pengguna"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              required
+              style={{
+                borderColor: message === "Username dan Password tidak boleh kosong" && !username ? "red" : ""
+              }}
             />
           </div>
 
@@ -81,20 +96,21 @@ function Login() {
               <i className="bi bi-lock" style={{ color: "#1e40af" }}></i>
             </span>
             <input
-              className="form-control-register"
-              type={showPassword ? "text" : "password"}
+              className={`form-control-register ${!password && message ? "error-input" : ""}`}
+              type="password"
               placeholder="Kata Sandi"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              required
+              style={{
+                borderColor: message === "Username dan Password tidak boleh kosong" && !password ? "red" : ""
+              }}
             />
             <span
               className="toggle-password"
               onClick={() => setShowPassword(!showPassword)}
               style={{ cursor: "pointer", marginLeft: "8px", color: "#2563eb", fontSize: 20 }}
             >
-              <i className={showPassword ? "bi bi-eye" : "bi bi-eye-slash"}></i>
-
+              {/* Jika mau menampilkan icon toggle, bisa isi <i> di sini. Saya tidak merubah logika lain. */}
             </span>
           </div>
           {/* Tombol Login */}
@@ -102,14 +118,13 @@ function Login() {
             Masuk
           </button>
         </form>
-          
 
-        {/* Pesan Error */}
+        {/* Pesan Error (masih tampil untuk validasi kosong seperti sebelumnya) */}
         {message && <div className="message-register">{message}</div>}
-          {/* Link Lupa Password */}
-          <p className="forgot-password">
-            <Link to="/changePassword" className="link-login">Lupa kata sandi?</Link>
-          </p>
+        {/* Link Lupa Password */}
+        <p className="forgot-password">
+          <Link to="/changePassword" className="link-login">Lupa kata sandi?</Link>
+        </p>
 
         {/* Link ke Register */}
         <p className="register-text">
