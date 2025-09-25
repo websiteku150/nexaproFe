@@ -61,7 +61,7 @@ function Register() {
 
     try {
       const res = await axios.post(
-        "https://57fde637bb8e.ngrok-free.app/api/Auth/register",
+        "https://db635882499b.ngrok-free.app//api/Auth/register",
         {
           username,
           email,

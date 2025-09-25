@@ -1,13 +1,36 @@
+.container-icon-keranjang {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  padding-top:80px ;
+}
+
+.icon-keranjang {
+  font-size: 1.5rem;
+  position: relative;
+  width: 70px;
+  height: 40px;
+  background-color: #0d47a1;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .title-streaming-customer {
   text-align: center;
   margin-top: 50px;
   color: #3b3b3b;
 }
 
+.container-streaming {
+    padding-top: 80px;
+}
+
 .judul-streaming-customer {
   font-size: 2.5rem;
   font-weight: bold;
-  color: #0d47a1; /* Biru tua untuk judul utama */
+  color: #0d47a1;
 }
 
 .subtitle-streaming-customer {
@@ -16,7 +39,6 @@
   margin-top: 10px;
 }
 
-/* Kolom Pencarian */
 .search-streaming-customer {
   width: 50%;
   padding: 12px 20px;
@@ -35,27 +57,11 @@
   box-shadow: 0 4px 12px rgba(13, 71, 161, 0.2);
 }
 
-/* Ikon Keranjang */
-.container-icon-keranjang {
-  position: absolute;
-  top: 30px;
-  right: 50px;
+.carousel-streaming {
+    width: 80%;
 }
 
-.icon-keranjang {
-  font-size: 1.5rem;
-  position: relative;
-  width: 70px;
-  height: 40px;
-  background-color: #0d47a1;
-  border-radius: 10px;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-/* Bagian Kartu Aplikasi */
 .card-streaming-customer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -105,7 +111,6 @@
   background-color: #0a3d82;
 }
 
-/* Styling untuk titik-titik (dots) di Slider */
 .slick-dots li button:before {
   color: #0d47a1 !important;
   font-size: 10px !important;
@@ -113,4 +118,52 @@
 
 .slick-dots li.slick-active button:before {
   color: #0d47a1 !important;
+}
+
+/* --- Media Queries untuk Tampilan Responsif --- */
+
+/* Tablet (Lebar Layar Maksimal 1024px) */
+@media (max-width: 1024px) {
+  .search-streaming-customer {
+    width: 70%;
+  }
+
+  .carousel-streaming{
+    width: 90%;
+  }
+
+  .card-streaming-customer {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 30px 50px;
+  }
+}
+
+/* Handphone (Lebar Layar Maksimal 768px) */
+@media (max-width: 768px) {
+  .judul-streaming-customer {
+    font-size: 2rem;
+  }
+
+  .carousel-streaming{
+    width: 90%;
+  }
+
+  .subtitle-streaming-customer {
+    font-size: 1rem;
+  }
+  
+  .container-icon-keranjang {
+    top: 20px;
+    right: 20px;
+  }
+
+  .search-streaming-customer {
+    width: 85%;
+  }
+
+  .card-streaming-customer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 20px;
+  }
 }
