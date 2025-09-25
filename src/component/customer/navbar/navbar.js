@@ -37,13 +37,13 @@ const Navbar = () => {
               <Link to="/customerHome"><i className="bi bi-house-door"></i> Home</Link>
             </li>
             <li className={`navbar-item ${isLinkActive('/customerStreaming') ? 'active' : ''}`}>
-              <Link to="/customerStreaming"><i className="bi bi-house-door"></i> Straming</Link>
+              <Link to="/customerStreaming"><i className="bi bi-film"></i> Straming</Link>
             </li>
             <li className={`navbar-item ${isLinkActive('/') ? 'active' : ''}`}>
-              <Link to="/"><i className="bi bi-house-door"></i> Software Editing</Link>
+              <Link to="/"><i className="bi bi-camera-video"></i> Software Editing</Link>
             </li>
             <li className={`navbar-item ${isLinkActive('/') ? 'active' : ''}`}>
-              <Link to="/"><i className="bi bi-house-door"></i> Profil</Link>
+              <Link to="/"><i className="bi bi-person"></i> Profil</Link>
             </li>
           </ul>
         </div>
@@ -63,13 +63,13 @@ const Navbar = () => {
             <Link to="/customerHome"><i className="bi bi-house-door"></i> Home</Link>
           </li>
           <li className={`mobile-item ${isLinkActive('/') ? 'active' : ''}`} onClick={toggleMobileMenu}>
-            <Link to="/"><i className="bi bi-house-door"></i> Streaming</Link>
+            <Link to="/"><i className="bi bi-film"></i> Streaming</Link>
           </li>
           <li className={`mobile-item ${isLinkActive('/') ? 'active' : ''}`} onClick={toggleMobileMenu}>
-            <Link to="/"><i className="bi bi-house-door"></i> Software Editing</Link>
+            <Link to="/"><i className="bi bi-camera-video"></i> Software Editing</Link>
           </li>
           <li className={`mobile-item ${isLinkActive('/') ? 'active' : ''}`} onClick={toggleMobileMenu}>
-            <Link to="/"><i className="bi bi-house-door"></i> Profil</Link>
+            <Link to="/"><i className="bi bi-person"></i> Profil</Link>
           </li>
         </ul>
       </div>

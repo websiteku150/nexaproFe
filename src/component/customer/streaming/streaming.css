@@ -1,0 +1,116 @@
+.title-streaming-customer {
+  text-align: center;
+  margin-top: 50px;
+  color: #3b3b3b;
+}
+
+.judul-streaming-customer {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #0d47a1; /* Biru tua untuk judul utama */
+}
+
+.subtitle-streaming-customer {
+  font-size: 1.2rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* Kolom Pencarian */
+.search-streaming-customer {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 30px auto;
+  display: block;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.search-streaming-customer:focus {
+  outline: none;
+  border-color: #0d47a1;
+  box-shadow: 0 4px 12px rgba(13, 71, 161, 0.2);
+}
+
+/* Ikon Keranjang */
+.container-icon-keranjang {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+}
+
+.icon-keranjang {
+  font-size: 1.5rem;
+  position: relative;
+  width: 70px;
+  height: 40px;
+  background-color: #0d47a1;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Bagian Kartu Aplikasi */
+.card-streaming-customer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 40px 100px;
+}
+
+.card-streaming-customer > div {
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-streaming-customer > div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card-streaming-customer img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.card-streaming-customer h3 {
+  font-size: 1.2rem;
+  color: #0d47a1;
+  margin: 10px 0;
+}
+
+.card-streaming-customer a {
+  display: inline-block;
+  background-color: #0d47a1;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.card-streaming-customer a:hover {
+  background-color: #0a3d82;
+}
+
+/* Styling untuk titik-titik (dots) di Slider */
+.slick-dots li button:before {
+  color: #0d47a1 !important;
+  font-size: 10px !important;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #0d47a1 !important;
+}
