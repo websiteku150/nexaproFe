@@ -39,8 +39,8 @@ const Navbar = () => {
             <li className={`navbar-item ${isLinkActive('/customerStreaming') ? 'active' : ''}`}>
               <Link to="/customerStreaming"><i className="bi bi-film"></i> Straming</Link>
             </li>
-            <li className={`navbar-item ${isLinkActive('/') ? 'active' : ''}`}>
-              <Link to="/"><i className="bi bi-camera-video"></i> Software Editing</Link>
+            <li className={`navbar-item ${isLinkActive('/customerSoftwareEditing') ? 'active' : ''}`}>
+              <Link to="/customerSoftwareEditing"><i className="bi bi-camera-video"></i> Software Editing</Link>
             </li>
             <li className={`navbar-item ${isLinkActive('/') ? 'active' : ''}`}>
               <Link to="/"><i className="bi bi-person"></i> Profil</Link>
@@ -62,11 +62,11 @@ const Navbar = () => {
           <li className={`mobile-item ${isLinkActive('/customerHome') ? 'active' : ''}`} onClick={toggleMobileMenu}>
             <Link to="/customerHome"><i className="bi bi-house-door"></i> Home</Link>
           </li>
-          <li className={`mobile-item ${isLinkActive('/') ? 'active' : ''}`} onClick={toggleMobileMenu}>
-            <Link to="/"><i className="bi bi-film"></i> Streaming</Link>
+          <li className={`mobile-item ${isLinkActive('/customerStreaming') ? 'active' : ''}`} onClick={toggleMobileMenu}>
+            <Link to="/customerStreaming"><i className="bi bi-film"></i> Streaming</Link>
           </li>
-          <li className={`mobile-item ${isLinkActive('/') ? 'active' : ''}`} onClick={toggleMobileMenu}>
-            <Link to="/"><i className="bi bi-camera-video"></i> Software Editing</Link>
+          <li className={`mobile-item ${isLinkActive('/customerSoftwareEditing') ? 'active' : ''}`} onClick={toggleMobileMenu}>
+            <Link to="/customerSoftwareEditing"><i className="bi bi-camera-video"></i> Software Editing</Link>
           </li>
           <li className={`mobile-item ${isLinkActive('/') ? 'active' : ''}`} onClick={toggleMobileMenu}>
             <Link to="/"><i className="bi bi-person"></i> Profil</Link>

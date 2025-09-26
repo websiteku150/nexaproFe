@@ -1,3 +1,7 @@
+.full-streaming {
+  padding-top: 100px;
+  background-color: #e8eeff;
+}
 .container-icon-keranjang {
   position: absolute;
   top: 30px;
@@ -21,10 +25,6 @@
   text-align: center;
   margin-top: 50px;
   color: #3b3b3b;
-}
-
-.container-streaming {
-    padding-top: 80px;
 }
 
 .judul-streaming-customer {
@@ -136,6 +136,9 @@
     grid-template-columns: repeat(2, 1fr);
     padding: 30px 50px;
   }
+  .container-icon-keranjang{
+    top: 300px;
+  }
 }
 
 /* Handphone (Lebar Layar Maksimal 768px) */
@@ -153,7 +156,7 @@
   }
   
   .container-icon-keranjang {
-    top: 20px;
+    top: 170px;
     right: 20px;
   }
 

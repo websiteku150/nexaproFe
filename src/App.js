@@ -9,6 +9,7 @@ import ChangePassword from './component/login/changePassword';
 import CustomerHome from './component/customer/home/CustomerHome';
 import Streaming from './component/customer/streaming/streaming';
 import ProtectRoute from './component/login/protectRoute';
+import SoftwareEditing from './component/customer/software_editing/software_editing';
 
 function App() {
   return (
@@ -29,6 +30,10 @@ function App() {
         <Route path='/customerStreaming' element={
           <ProtectRoute role="Customer">
           <Streaming/>
+          </ProtectRoute>}/>
+        <Route path='/customerSoftwareEditing' element={
+          <ProtectRoute role="Customer">
+          <SoftwareEditing/>
           </ProtectRoute>}/>
       </Routes>
     </Router>
