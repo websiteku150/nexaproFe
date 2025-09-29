@@ -3,9 +3,9 @@
   import "slick-carousel/slick/slick.css";
   import "slick-carousel/slick/slick-theme.css";
   import Slider from "react-slick";
-  import banner1 from "../software_editing/img/banner-editing1.png";
-  import banner2 from "../software_editing/img/banner-editing2.png";
-  import banner3 from "../software_editing/img/banner-editing3.png";
+  import banner1 from "./img/banner-streaming1.png";
+  import banner2 from "./img/banner-streaming2.png";
+  import banner3 from "./img/banner-streaming3.png";
   import "./streaming.css";
   import Navbar from "../navbar/navbar";
   import axios from "axios";
@@ -18,7 +18,7 @@
     // Fetch product dari backend sekali saja
     useEffect(() => {
       axios
-        .get("https://2f79b8206ed2.ngrok-free.app/api/Product?category=streaming", {
+        .get("https://600647d31151.ngrok-free.app/api/Product", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
             "ngrok-skip-browser-warning": "true",

@@ -18,7 +18,7 @@
     // Fetch product dari backend sekali saja
     useEffect(() => {
       axios
-        .get("https://2f79b8206ed2.ngrok-free.app/api/Product?category=streaming", {
+        .get("https://600647d31151.ngrok-free.app/api/Product?category=streaming", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
             "ngrok-skip-browser-warning": "true",
