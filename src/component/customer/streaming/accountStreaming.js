@@ -10,23 +10,26 @@
   import Navbar from "../navbar/navbar";
   import axios from "axios";
   import { Link } from "react-router-dom";
+  import { useParams } from "react-router-dom";
 
-  function Streaming() {
+  function AccountStreaming() {
+    const {id} = useParams();
     const [search, setSearch] = useState("");
     const [data, setData] = useState([]);
+    const [product, setProduct] = useState()
     const navigate = useNavigate();
 
     // Fetch product dari backend sekali saja
     useEffect(() => {
       axios
-        .get("https://4a3c718fc610.ngrok-free.app/api/Product", {
+        .get(`https://4a3c718fc610.ngrok-free.app/api/Account/product/${id}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
             "ngrok-skip-browser-warning": "true",
           },
         })
         .then((res) => {
-          console.log("Respons backend:", res.data);
+          console.log("Respons akun:", res.data);
           if (Array.isArray(res.data)) {
             setData(res.data);
           } else {
@@ -37,15 +40,23 @@
         .catch((err) => {
           console.error("Gagal mengambil data:", err);
         });
-    }, []);
 
-     const streamingData = data.filter(
-    (f) => f.category?.toLowerCase().includes("streaming")
-  );
+        // axios.get(`https://4a3c718fc610.ngrok-free.app/api/Product/${id}`, {
+        //     headers:{
+        //         Authorization: `Bearer ${localStorage.getItem("token")}`,
+        //         "ngrok-skip-browser-warning": "true"
+        //     },
+        // }).then((res) => {
+        //     setProduct(res.data);
+        // }).catch((err)=> {
+        //     console.log("Gagal mengambil product:", err)
+        // })
+    }, [id]);
+
 
     // Filtering produk sesuai search input
-    const filterData = streamingData.filter((f) =>
-      f.name.toLowerCase().includes(search.toLowerCase())
+    const filterData = data.filter((f) =>
+      f.specification.toLowerCase().includes(search.toLowerCase())
     );
 
     // Konfigurasi carousel
@@ -64,7 +75,7 @@
         <Navbar />
             {/* Carousel */}
             <div className="full-streaming">
-            <div
+            {/* <div
               style={{ marginTop: '100px', margin: "auto", borderRadius: "10px" }}
               className="carousel-streaming"
             >
@@ -91,7 +102,7 @@
                   />
                 </div>
               </Slider>
-            </div>
+            </div> */}
         <div className="body-container">
           <div className="container-streaming">
             <div className="container-icon-keranjang">
@@ -126,12 +137,12 @@
               {filterData.length > 0 ? (
                 filterData.map((item) => (
                   <div key={item.id}
-                  onClick={()=> navigate(`/streamingAccount/${item.id}`)}
                   style={{cursor: 'pointer'}}
                   >
-                    <img src={item.logo} alt={item.name} />
-                    <h3>{item.name}</h3>
-                    <p>{item.category}</p>
+                    <img src={item.thumbnail} alt="thumbnail" />
+                    <h3>{item.specification}</h3>
+                    <p>{item.price}</p>
+                    <p>{item.count}</p>
                     <div>
                       <p className="jenis-streaming">
                         Lihat Jenis Akun
@@ -150,4 +161,4 @@
     );
   }
 
-  export default Streaming;
+  export default AccountStreaming;

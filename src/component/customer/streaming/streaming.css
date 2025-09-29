@@ -96,7 +96,7 @@
   margin: 10px 0;
 }
 
-.card-streaming-customer a {
+.card-streaming-customer .jenis-streaming {
   display: inline-block;
   background-color: #0d47a1;
   color: white;
@@ -107,7 +107,7 @@
   transition: background-color 0.3s ease;
 }
 
-.card-streaming-customer a:hover {
+.card-streaming-customer .jenis-streaming:hover {
   background-color: #0a3d82;
 }
 
