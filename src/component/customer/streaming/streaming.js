@@ -15,11 +15,11 @@
     const [search, setSearch] = useState("");
     const [data, setData] = useState([]);
     const navigate = useNavigate();
+    const [cartCount, setCartCount] = useState(0)
 
-    // Fetch product dari backend sekali saja
     useEffect(() => {
       axios
-        .get("https://4a3c718fc610.ngrok-free.app/api/Product", {
+        .get("https://f3bd28eb96d4.ngrok-free.app/api/Product", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
             "ngrok-skip-browser-warning": "true",
@@ -38,6 +38,22 @@
           console.error("Gagal mengambil data:", err);
         });
     }, []);
+
+    useEffect(()=>{
+      axios.get("https://f3bd28eb96d4.ngrok-free.app/api/Order/my-cart",{
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          "ngrok-skip-browser-warning": "true",
+        }
+      }).then((res)=> {
+        if (res.data && Array.isArray(res.data.items)){
+          const total = res.data.items.reduce((acc, item)=> acc + item.quantity, 0);
+          setCartCount(total)
+        }else{
+          setCartCount(0)
+        }
+      }).catch((err)=> console.error("Gagal ambil cart:", err));
+    }, [])
 
      const streamingData = data.filter(
     (f) => f.category?.toLowerCase().includes("streaming")
@@ -100,7 +116,7 @@
                   className="bi bi-cart"
                   style={{ marginRight: 10, fontSize: "bold" }}
                 ></i>
-                {}1
+                {cartCount}
               </p>
             </div>
 
@@ -130,7 +146,7 @@
                   style={{cursor: 'pointer'}}
                   >
                     <img src={item.logo} alt={item.name} />
-                    <h3>{item.name}</h3>
+                    <h3 style={{fontSize: 25, fontWeight: 'bold'}}>{item.name}</h3>
                     <p>{item.category}</p>
                     <div>
                       <p className="jenis-streaming">

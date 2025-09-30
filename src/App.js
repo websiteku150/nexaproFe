@@ -11,6 +11,7 @@ import Streaming from './component/customer/streaming/streaming';
 import ProtectRoute from './component/login/protectRoute';
 import SoftwareEditing from './component/customer/software_editing/software_editing';
 import AccountStreaming from './component/customer/streaming/accountStreaming';
+import AccountSoftwareEditing from './component/customer/software_editing/accountSoftwareEditing';
 
 function App() {
   return (
@@ -39,6 +40,10 @@ function App() {
         <Route path='/streamingAccount/:id' element={
           <ProtectRoute role="Customer">
           <AccountStreaming/>
+          </ProtectRoute>}/>
+        <Route path='/softwareEditingAccount/:id' element={
+          <ProtectRoute role="Customer">
+          <AccountSoftwareEditing/>
           </ProtectRoute>}/>
       </Routes>
     </Router>

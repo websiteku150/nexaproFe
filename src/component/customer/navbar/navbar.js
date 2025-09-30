@@ -37,7 +37,7 @@ const Navbar = () => {
               <Link to="/customerHome"><i className="bi bi-house-door"></i> Home</Link>
             </li>
             <li className={`navbar-item ${isLinkActive('/customerStreaming') ? 'active' : ''}`}>
-              <Link to="/customerStreaming"><i className="bi bi-film"></i> Straming</Link>
+              <Link to="/customerStreaming"><i className="bi bi-film"></i> Streaming</Link>
             </li>
             <li className={`navbar-item ${isLinkActive('/customerSoftwareEditing') ? 'active' : ''}`}>
               <Link to="/customerSoftwareEditing"><i className="bi bi-camera-video"></i> Software Editing</Link>

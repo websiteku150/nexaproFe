@@ -2,17 +2,13 @@
   import { useNavigate } from "react-router-dom";
   import "slick-carousel/slick/slick.css";
   import "slick-carousel/slick/slick-theme.css";
-  import Slider from "react-slick";
-  import banner1 from "./img/banner-streaming1.png";
-  import banner2 from "./img/banner-streaming2.png";
-  import banner3 from "./img/banner-streaming3.png";
-  import "./streaming.css";
+  import "../streaming/streaming.css";
   import Navbar from "../navbar/navbar";
   import axios from "axios";
   import { Link } from "react-router-dom";
   import { useParams } from "react-router-dom";
 
-  function AccountStreaming() {
+  function AccountSoftwareEditing() {
     const {id} = useParams();
     const [search, setSearch] = useState("");
     const [data, setData] = useState([]);
@@ -225,4 +221,4 @@
     );
   }
 
-  export default AccountStreaming;
+  export default AccountSoftwareEditing;
